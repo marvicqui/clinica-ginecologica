@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clínica Ginecológica — Landing page
 
-## Getting Started
+Landing page de una sola página para **Clínica Ginecológica** (Minatitlán, Veracruz): más de 30
+años cuidando la salud de la mujer con especialistas certificados y tecnología de vanguardia.
 
-First, run the development server:
+- **Producción:** https://clinica-ginecologica-three.vercel.app
+- **Stack:** Next.js (App Router) · Tailwind CSS v4 · TypeScript · lucide-react
+- **Design System:** proyecto de claude.ai/design `56f8dc3f` — tokens y componentes portados a
+  `src/app/globals.css` y `src/components/`
+
+## Estructura
+
+| Ruta | Contenido |
+| --- | --- |
+| `src/app/layout.tsx` | Metadatos SEO, Open Graph (WhatsApp), favicons, JSON-LD `MedicalClinic`, fuentes |
+| `src/app/page.tsx` | Secciones: hero, beneficios, servicios, unidad especializada, especialistas, misión/visión/valores, FAQ, contacto, cierre |
+| `src/lib/data.ts` | Contenido editable: datos de contacto, servicios, especialistas, unidad, FAQ |
+| `src/components/` | Componentes del Design System (Button, ServiceCard, NavBar, etc.) |
+| `docs/` | Documentos de referencia: información oficial de la clínica y descubrimiento de contenido |
+| `public/images/` | Fotografías de servicios y Open Graph |
+| `public/logo/` | Logotipo y símbolo oficiales (SVG/PNG) |
+
+## Contenido
+
+Los textos provienen de `docs/informacion-oficial-clinica.md` (información oficial entregada por la
+clínica el 27 de julio de 2026) y `docs/contenido-landing-clinica-ginecologica.md` (descubrimiento).
+Para actualizar teléfonos, servicios, especialistas o preguntas frecuentes basta editar
+`src/lib/data.ts`.
+
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev    # http://localhost:3000
+npm run build  # build de producción
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Despliegue
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Cada push a `main` despliega automáticamente a producción mediante la integración nativa de
+Vercel con GitHub (los PRs generan previews). GitHub Actions (`.github/workflows/deploy.yml`)
+ejecuta lint + build como CI.

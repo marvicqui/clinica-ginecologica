@@ -18,7 +18,8 @@ export function Footer() {
         <Logotype onDark size="sm" descriptor="Salud femenina integral" />
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
           <p style={{ fontSize: "var(--fs-body-sm)", lineHeight: "var(--lh-body)", maxWidth: 320 }}>
-            Salud, bienestar y atención especializada en cada etapa de tu vida.
+            Experiencia, innovación y tecnología al servicio de la salud de la mujer. Más de 30 años
+            cuidando tu bienestar en cada etapa de tu vida.
           </p>
           <div style={{ display: "flex", gap: 12 }}>
             {social.map((s) => (

@@ -10,7 +10,16 @@ import {
   SectionHeading,
   ServiceCard,
 } from "@/components/ui";
-import { beneficios, clinica, faqs, servicios, waHref } from "@/lib/data";
+import {
+  beneficios,
+  clinica,
+  doctores,
+  faqs,
+  filosofia,
+  servicios,
+  unidad,
+  waHref,
+} from "@/lib/data";
 
 function Hero() {
   return (
@@ -33,22 +42,23 @@ function Hero() {
         <div
           className="fade-up"
           style={{
-            maxWidth: 520,
+            maxWidth: 560,
             display: "flex",
             flexDirection: "column",
             alignItems: "flex-start",
             gap: "var(--space-6)",
           }}
         >
-          <Badge>Salud femenina integral</Badge>
+          <Badge>Más de 30 años cuidando la salud de la mujer</Badge>
           <h1 style={{ font: "var(--type-hero)", letterSpacing: "var(--ls-display)" }}>
             Tu salud merece
             <br />
             <span style={{ color: "var(--text-accent)" }}>atención especializada</span>
           </h1>
-          <p style={{ maxWidth: 420 }}>
-            En nuestra clínica encontrarás atención ginecológica y prenatal, prevención y
-            tratamientos especializados en un ambiente seguro, confidencial y cercano.
+          <p style={{ maxWidth: 460 }}>
+            Atención médica integral para la mujer en todas las etapas de su vida, con especialistas
+            certificados y tecnología de última generación, en un ambiente seguro, confidencial y
+            cercano.
           </p>
           <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap", marginTop: "var(--space-2)" }}>
             <Button variant="primary" size="lg" href={waHref()} iconLeft={<Icon name="calendar" size={18} />}>
@@ -87,16 +97,16 @@ function Servicios() {
         <p
           style={{
             textAlign: "center",
-            maxWidth: 620,
+            maxWidth: 640,
             margin: "var(--space-5) auto 0",
             fontSize: "var(--fs-body-lg)",
           }}
         >
-          Consulta, prevención, planificación familiar y procedimientos especializados, con
+          Ginecología, obstetricia, diagnóstico por imagen y tratamientos especializados, con
           seguimiento cercano de principio a fin.
         </p>
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
           style={{ gap: "var(--card-gap)", marginTop: "var(--space-12)" }}
         >
           {servicios.map((s) => (
@@ -134,7 +144,7 @@ function Servicios() {
   );
 }
 
-function BandaTecnologia() {
+function UnidadEstetica() {
   return (
     <section style={{ background: "var(--surface-dark)" }} className="grid grid-cols-1 lg:grid-cols-2">
       <div
@@ -146,56 +156,63 @@ function BandaTecnologia() {
           gap: "var(--space-8)",
         }}
       >
-        <SectionHeading onDark align="left" ornament={false} accent="y experiencia">
-          Atención médica con tecnología
-        </SectionHeading>
-        <div style={{ height: 1, width: 88, background: "rgba(240,184,193,.5)" }} />
-        <div style={{ display: "flex", gap: "var(--space-10)", flexWrap: "wrap" }}>
-          <FeatureItem
-            onDark
-            icon="stethoscope"
-            label={
-              <>
-                Diagnóstico
-                <br />
-                especializado
-              </>
-            }
-          />
-          <FeatureItem
-            onDark
-            icon="microscope"
-            label={
-              <>
-                Tecnología
-                <br />
-                avanzada
-              </>
-            }
-          />
-          <FeatureItem
-            onDark
-            icon="heart-handshake"
-            label={
-              <>
-                Atención
-                <br />
-                personalizada
-              </>
-            }
-          />
+        <div>
+          <Badge onDark>Unidad especializada</Badge>
         </div>
-        <p style={{ color: "var(--text-on-dark-muted)", maxWidth: 420 }}>
-          Cada paciente recibe una evaluación individualizada y un plan de atención acorde con sus
-          necesidades.
+        <SectionHeading onDark align="left" ornament={false} accent="regenerativa y estética íntima">
+          Ginecología funcional,
+        </SectionHeading>
+        <p style={{ color: "var(--text-on-dark-muted)", maxWidth: 460, marginTop: "calc(var(--space-4) * -1)" }}>
+          {unidad.intro}
         </p>
+        <div style={{ height: 1, width: 88, background: "rgba(240,184,193,.5)" }} />
+        <ul
+          className="grid grid-cols-1 sm:grid-cols-2"
+          style={{
+            listStyle: "none",
+            margin: 0,
+            padding: 0,
+            gap: "var(--space-3) var(--space-8)",
+            maxWidth: 640,
+          }}
+        >
+          {unidad.tratamientos.map((t) => (
+            <li
+              key={t}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 10,
+                color: "var(--text-on-dark)",
+                fontSize: "var(--fs-body-sm)",
+                lineHeight: "var(--lh-snug)",
+              }}
+            >
+              <Icon name="check" size={16} color="var(--icon-on-dark)" style={{ marginTop: 2 }} />
+              {t}
+            </li>
+          ))}
+        </ul>
+        <p style={{ color: "var(--text-on-dark-muted)", fontSize: "var(--fs-caption)", maxWidth: 460 }}>
+          {unidad.nota}
+        </p>
+        <Button
+          variant="accent"
+          href={waHref(
+            "Hola, quisiera información sobre la Unidad de Ginecología Funcional, Regenerativa y Estética Íntima."
+          )}
+          iconLeft={<Icon name="message-circle" size={16} />}
+          style={{ alignSelf: "flex-start" }}
+        >
+          Agendar valoración
+        </Button>
       </div>
       <div
         aria-hidden
         style={{
           minHeight: 420,
           backgroundColor: "var(--navy-700)",
-          backgroundImage: "url(/images/tecnologia-experiencia.webp)",
+          backgroundImage: "url(/images/services/rejuvenecimiento-urogenital.webp)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -204,59 +221,128 @@ function BandaTecnologia() {
   );
 }
 
-function Especialista() {
+function Especialistas() {
   return (
-    <section id="especialista" className="section" style={{ background: "var(--surface-alt)" }}>
+    <section id="especialistas" className="section" style={{ background: "var(--surface-alt)" }}>
       <div className="container-ds">
-        <SectionHeading accent="especialista">Conoce a nuestra</SectionHeading>
-        <div
-          className="grid grid-cols-1 md:grid-cols-[280px_1fr]"
+        <SectionHeading accent="especialistas">Conoce a nuestros</SectionHeading>
+        <p
           style={{
-            maxWidth: 860,
-            margin: "var(--space-12) auto 0",
-            background: "var(--white)",
-            borderRadius: "var(--radius-lg)",
-            boxShadow: "var(--shadow-card)",
-            overflow: "hidden",
-            alignItems: "stretch",
+            textAlign: "center",
+            maxWidth: 640,
+            margin: "var(--space-5) auto 0",
+            fontSize: "var(--fs-body-lg)",
           }}
         >
-          <div
-            aria-hidden
-            style={{
-              minHeight: 280,
-              backgroundImage: "url(/images/logo-clinica-ginecologica-dra-alma-idalia.jpg)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-          <div
-            style={{
-              padding: "var(--space-10)",
-              display: "flex",
-              flexDirection: "column",
-              gap: "var(--space-4)",
-              justifyContent: "center",
-            }}
-          >
-            <Badge>Salud femenina integral</Badge>
-            <h3 style={{ font: "var(--fw-bold) var(--fs-h2)/var(--lh-heading) var(--font-display)" }}>
-              {clinica.doctora}
-            </h3>
-            <p style={{ fontSize: "var(--fs-body)" }}>
-              Atención enfocada en la salud reproductiva y el bienestar femenino. Acompañamiento
-              cercano, orientación clara y evaluación personalizada en cada consulta.
-            </p>
-            <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap", marginTop: "var(--space-2)" }}>
-              <Button variant="accent" href={waHref()} iconLeft={<Icon name="message-circle" size={16} />}>
-                Agendar por WhatsApp
+          Médicos certificados por el Consejo Mexicano de Ginecología y Obstetricia, A.C., y miembros
+          de la Federación Mexicana de Colegios de Obstetricia y Ginecología (FEMECOG).
+        </p>
+        <div
+          className="grid grid-cols-1 lg:grid-cols-2"
+          style={{ gap: "var(--card-gap)", marginTop: "var(--space-12)", alignItems: "stretch" }}
+        >
+          {doctores.map((d) => (
+            <article
+              key={d.nombre}
+              style={{
+                background: "var(--white)",
+                borderRadius: "var(--radius-lg)",
+                boxShadow: "var(--shadow-card)",
+                padding: "var(--space-10)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "var(--space-5)",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "var(--space-4)" }}>
+                <div
+                  style={{
+                    width: 64,
+                    height: 64,
+                    flex: "none",
+                    borderRadius: "var(--radius-circle)",
+                    background: "var(--rose-100)",
+                    border: "var(--border-hairline) solid var(--border-rose)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Icon name="stethoscope" size={30} color="var(--icon-accent)" />
+                </div>
+                <div>
+                  <h3 style={{ font: "var(--fw-bold) var(--fs-h3)/var(--lh-heading) var(--font-display)" }}>
+                    {d.nombre}
+                  </h3>
+                  <p style={{ fontSize: "var(--fs-body-sm)", color: "var(--text-accent)", fontWeight: "var(--fw-bold)" }}>
+                    {d.titulo}
+                  </p>
+                </div>
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
+                {d.areas.map((a) => (
+                  <Badge key={a}>{a}</Badge>
+                ))}
+              </div>
+              <p style={{ fontSize: "var(--fs-body-sm)", flex: 1 }}>{d.semblanza}</p>
+              <div
+                style={{
+                  paddingTop: "var(--space-4)",
+                  borderTop: "var(--border-hairline) solid var(--border-subtle)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "var(--space-2)",
+                }}
+              >
+                <span style={{ fontSize: "var(--fs-caption)", color: "var(--text-muted)" }}>{d.certificaciones}</span>
+                <span style={{ fontSize: "var(--fs-caption)", color: "var(--text-strong)", fontWeight: "var(--fw-bold)" }}>
+                  {d.cedulas}
+                </span>
+              </div>
+              <Button
+                variant="accent"
+                href={waHref(`Hola, quisiera agendar una cita con ${d.nombre.split(" ").slice(0, 3).join(" ")}.`)}
+                iconLeft={<Icon name="message-circle" size={16} />}
+                style={{ alignSelf: "flex-start" }}
+              >
+                Agendar cita
               </Button>
-              <Button variant="outline" href={clinica.telHref} iconLeft={<Icon name="phone" size={16} />}>
-                {clinica.tel}
-              </Button>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function Filosofia() {
+  return (
+    <section className="section" style={{ paddingBlock: "var(--space-16)" }}>
+      <div
+        className="container-ds grid grid-cols-1 md:grid-cols-3"
+        style={{
+          background: "var(--white)",
+          border: "var(--border-hairline) solid var(--border-subtle)",
+          borderRadius: "var(--radius-lg)",
+          boxShadow: "var(--shadow-card)",
+          padding: "var(--space-10)",
+          gap: "var(--space-10)",
+          maxWidth: "calc(var(--container-max))",
+        }}
+      >
+        <InfoTile filled icon="target" title="Nuestra misión">
+          {filosofia.mision}
+        </InfoTile>
+        <InfoTile icon="eye" title="Nuestra visión">
+          {filosofia.vision}
+        </InfoTile>
+        <InfoTile icon="heart-handshake" title="Nuestros valores">
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)", marginTop: 4 }}>
+            {filosofia.valores.map((v) => (
+              <Badge key={v}>{v}</Badge>
+            ))}
+          </div>
+        </InfoTile>
       </div>
     </section>
   );
@@ -264,7 +350,7 @@ function Especialista() {
 
 function Preguntas() {
   return (
-    <section id="preguntas" className="section">
+    <section id="preguntas" className="section" style={{ paddingTop: 0 }}>
       <div className="container-ds" style={{ maxWidth: 860 }}>
         <SectionHeading accent="frecuentes">Preguntas</SectionHeading>
         <div
@@ -361,9 +447,9 @@ function Cierre() {
           <h2 className="section-title section-title-on-dark" style={{ fontSize: "var(--fs-h2)" }}>
             Da el primer paso para <span className="accent">cuidar tu salud</span>
           </h2>
-          <p style={{ color: "var(--text-on-dark-muted)", maxWidth: 520 }}>
-            Escríbenos por WhatsApp para solicitar información y encontrar el horario de atención
-            más conveniente para ti.
+          <p style={{ color: "var(--text-on-dark-muted)", maxWidth: 560 }}>
+            Permítenos acompañarte en cada etapa de tu vida con la confianza de estar en manos de
+            especialistas comprometidos con tu salud y bienestar.
           </p>
         </div>
         <Button
@@ -388,8 +474,9 @@ export default function Home() {
         <Hero />
         <Beneficios />
         <Servicios />
-        <BandaTecnologia />
-        <Especialista />
+        <UnidadEstetica />
+        <Especialistas />
+        <Filosofia />
         <Preguntas />
         <Contacto />
         <Cierre />

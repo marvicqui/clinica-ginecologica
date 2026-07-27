@@ -78,9 +78,11 @@ const jsonLd = {
   "@type": "MedicalClinic",
   name: clinica.nombre,
   description,
+  slogan: clinica.lema,
   url: SITE_URL,
   telephone: "+52 922 221 1285",
   image: `${SITE_URL}/images/og-clinica-ginecologica.jpg`,
+  medicalSpecialty: ["Gynecologic", "Obstetric"],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Calle Benito Juárez No. 5, Col. Insurgentes Sur",
@@ -91,6 +93,22 @@ const jsonLd = {
   },
   sameAs: [clinica.facebook],
   openingHours: ["Mo-Fr 08:00-20:00", "Sa 08:00-14:00"],
+  employee: [
+    {
+      "@type": "Physician",
+      name: "Dra. Alma Idalia Meléndez Pérez Rubio",
+      medicalSpecialty: ["Gynecologic", "Obstetric"],
+      description:
+        "Médica Especialista en Ginecología y Obstetricia. Cédula profesional 2263155, cédula de especialidad 9858488. Certificada por el Consejo Mexicano de Ginecología y Obstetricia, A.C.",
+    },
+    {
+      "@type": "Physician",
+      name: "Dr. Víctor Hugo Herberth Hernández",
+      medicalSpecialty: ["Gynecologic", "Obstetric"],
+      description:
+        "Médico Especialista en Ginecología y Obstetricia. Cédula profesional 2165588, cédula de especialidad 3273097. Certificado por el Consejo Mexicano de Ginecología y Obstetricia, A.C.",
+    },
+  ],
 };
 
 export default function RootLayout({
