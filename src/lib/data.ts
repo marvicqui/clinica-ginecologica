@@ -73,7 +73,7 @@ export const servicios: Servicio[] = [
     icon: "flower-2",
     title: "Climaterio y menopausia",
     desc: "Acompañamiento y tratamientos personalizados para tu bienestar en esta etapa de la vida.",
-    image: "/images/foto-consulta.jpg",
+    image: "/images/services/climaterio-menopausia.webp",
   },
   {
     icon: "zap",

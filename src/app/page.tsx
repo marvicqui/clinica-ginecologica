@@ -212,9 +212,9 @@ function UnidadEstetica() {
         style={{
           minHeight: 420,
           backgroundColor: "var(--navy-700)",
-          backgroundImage: "url(/images/services/rejuvenecimiento-urogenital.webp)",
+          backgroundImage: "url(/images/unidad-ginecologia-funcional-regenerativa.webp)",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "30% center",
         }}
       />
     </section>
