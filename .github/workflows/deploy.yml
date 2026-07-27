@@ -1,0 +1,56 @@
+name: CI y despliegue a Vercel
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  ci:
+    name: Lint y build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+
+  deploy:
+    name: Deploy producción (Vercel)
+    needs: ci
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Verificar VERCEL_TOKEN
+        id: token
+        run: |
+          if [ -n "${{ secrets.VERCEL_TOKEN }}" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Falta el secreto VERCEL_TOKEN. Crea un token en https://vercel.com/account/settings/tokens y agrégalo con: gh secret set VERCEL_TOKEN"
+          fi
+      - name: Instalar Vercel CLI
+        if: steps.token.outputs.present == 'true'
+        run: npm i -g vercel@latest
+      - name: Pull configuración de Vercel
+        if: steps.token.outputs.present == 'true'
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build (prebuilt)
+        if: steps.token.outputs.present == 'true'
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy a producción
+        if: steps.token.outputs.present == 'true'
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
