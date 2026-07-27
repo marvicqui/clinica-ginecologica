@@ -195,7 +195,7 @@ function BandaTecnologia() {
         style={{
           minHeight: 420,
           backgroundColor: "var(--navy-700)",
-          backgroundImage: "url(/images/foto-consulta.jpg)",
+          backgroundImage: "url(/images/tecnologia-experiencia.webp)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
