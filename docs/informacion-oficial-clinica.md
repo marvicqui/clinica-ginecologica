@@ -64,6 +64,22 @@ Protocolos personalizados de salud íntima.
 > Todos los tratamientos son realizados por médicos especialistas certificados, previa valoración
 > clínica individualizada.
 
+## FibroScan (elastografía hepática)
+
+> Información y contacto propios proporcionados el 27 de julio de 2026. **FibroScan se presenta
+> como sección independiente de GastroEndoscopía** y tiene su propia línea de atención:
+>
+> - **WhatsApp FibroScan:** 922 203 0699 (`wa.me/529222030699`) — *número distinto al WhatsApp
+>   general de la clínica; confirmado por la clínica específicamente para FibroScan.*
+> - **Facebook FibroScan:** <https://www.facebook.com/profile.php?id=61590488552690>
+> - **Imagen:** mascota oficial en `public/images/fibroscan-mascota.webp`.
+
+Prueba médica rápida y no invasiva —muy parecida a un ultrasonido común— que revisa la salud del
+hígado en unos 10 minutos, sin agujas, sin dolor y saliendo caminando al instante. Mide:
+
+1. **Rigidez del hígado:** qué tan "duro" o cicatrizado está (indica fibrosis o cirrosis).
+2. **Grasa acumulada:** cuánta grasa hay retenida en las células hepáticas (esteatosis).
+
 ## Servicios (cartera oficial)
 
 Ginecología · Obstetricia · Control prenatal · Embarazo de alto riesgo · Colposcopía · Ultrasonido

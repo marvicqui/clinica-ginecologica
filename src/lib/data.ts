@@ -35,11 +35,43 @@ export function waHref(text: string = clinica.waMensaje) {
   return `https://wa.me/529223460871?text=${encodeURIComponent(text)}`;
 }
 
+/* FibroScan tiene su propia línea de contacto (WhatsApp y Facebook distintos a los de la clínica). */
+export const fibroscan = {
+  nombre: "FibroScan",
+  tecnico: "elastografía hepática",
+  whatsapp: "922 203 0699",
+  waHref:
+    "https://wa.me/529222030699?text=" +
+    encodeURIComponent("Hola, quisiera más información sobre el estudio FibroScan."),
+  facebook: "https://www.facebook.com/profile.php?id=61590488552690",
+  intro:
+    "Imagina revisar la salud de tu hígado en solo 10 minutos, sin agujas, sin dolor y saliendo caminando al instante. Eso es exactamente lo que hace el FibroScan (médicamente llamado elastografía hepática): una prueba rápida y no invasiva, muy parecida a un ultrasonido común.",
+  mide: [
+    {
+      icon: "activity",
+      title: "Rigidez del hígado",
+      desc: "Mide qué tan firme o cicatrizado está el tejido, lo que indica fibrosis o cirrosis.",
+    },
+    {
+      icon: "droplets",
+      title: "Grasa acumulada",
+      desc: "Cuantifica la grasa retenida en las células hepáticas (esteatosis).",
+    },
+  ],
+  rapidos: [
+    "Solo 10 minutos",
+    "Sin agujas y sin dolor",
+    "No invasivo, como un ultrasonido",
+    "Sales caminando al instante",
+  ],
+};
+
 export type Servicio = {
   icon: string;
   title: string;
   desc: string;
   image: string;
+  href?: string;
 };
 
 /* Cartera oficial (informacion-oficial-clinica.md) + servicios confirmados previamente
@@ -82,10 +114,17 @@ export const servicios: Servicio[] = [
     image: "/images/services/rejuvenecimiento-urogenital.webp",
   },
   {
-    icon: "activity",
-    title: "GastroEndoscopía y FibroScan",
-    desc: "Estudios endoscópicos y evaluación hepática no invasiva para la salud digestiva.",
+    icon: "microscope",
+    title: "GastroEndoscopía",
+    desc: "Estudios endoscópicos para la prevención, diagnóstico y tratamiento de enfermedades del aparato digestivo.",
     image: "/images/services/gastroendoscopia.webp",
+  },
+  {
+    icon: "activity",
+    title: "FibroScan",
+    desc: "Evaluación no invasiva de la salud de tu hígado en 10 minutos, sin agujas y sin dolor.",
+    image: "/images/services/fibroscan.webp",
+    href: "#fibroscan",
   },
   {
     icon: "sparkles",
@@ -202,6 +241,10 @@ export const faqs = [
     a: "Es nuestra unidad de tratamientos mínimamente invasivos —láser ginecológico, HIFU vaginal, rehabilitación del piso pélvico y manejo de la incontinencia urinaria— realizados por especialistas certificados, previa valoración clínica.",
   },
   {
+    q: "¿Qué es el FibroScan?",
+    a: "Es una prueba rápida y no invasiva —muy parecida a un ultrasonido— que mide la rigidez y la grasa de tu hígado en unos 10 minutos, sin agujas y sin dolor. Para más información escríbenos por WhatsApp al 922 203 0699.",
+  },
+  {
     q: "¿Ofrecen métodos anticonceptivos?",
     a: "Sí, contamos con planificación familiar, aplicación de DIU e implante subdérmico. La opción adecuada se define contigo mediante valoración médica.",
   },
@@ -214,6 +257,7 @@ export const faqs = [
 export const navItems = [
   { id: "inicio", label: "Inicio" },
   { id: "servicios", label: "Servicios" },
+  { id: "fibroscan", label: "FibroScan" },
   { id: "especialistas", label: "Especialistas" },
   { id: "preguntas", label: "Preguntas" },
   { id: "contacto", label: "Contacto" },

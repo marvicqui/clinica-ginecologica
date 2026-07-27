@@ -15,6 +15,7 @@ import {
   clinica,
   doctores,
   faqs,
+  fibroscan,
   filosofia,
   servicios,
   unidad,
@@ -110,13 +111,21 @@ function Servicios() {
           style={{ gap: "var(--card-gap)", marginTop: "var(--space-12)" }}
         >
           {servicios.map((s) => (
-            <ServiceCard key={s.title} title={s.title} description={s.desc} icon={s.icon} image={s.image} />
+            <ServiceCard
+              key={s.title}
+              title={s.title}
+              description={s.desc}
+              icon={s.icon}
+              image={s.image}
+              href={s.href}
+            />
           ))}
           <div
+            className="lg:col-span-3"
             style={{
               background: "var(--surface-dark)",
               borderRadius: "var(--radius-md)",
-              padding: "var(--card-pad)",
+              padding: "var(--space-8) var(--card-pad)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -217,6 +226,84 @@ function UnidadEstetica() {
           backgroundPosition: "30% center",
         }}
       />
+    </section>
+  );
+}
+
+function FibroScan() {
+  return (
+    <section id="fibroscan" className="section">
+      <div
+        className="container-ds grid grid-cols-1 lg:grid-cols-[1.1fr_1fr]"
+        style={{ gap: "var(--space-12)", alignItems: "center" }}
+      >
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "var(--space-6)" }}>
+          <Badge>FibroScan · Elastografía hepática</Badge>
+          <SectionHeading align="left" ornament={false} accent="en solo 10 minutos">
+            Revisa la salud de tu hígado
+          </SectionHeading>
+          <p style={{ maxWidth: 520 }}>{fibroscan.intro}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "var(--space-6)", width: "100%" }}>
+            {fibroscan.mide.map((m) => (
+              <InfoTile key={m.title} icon={m.icon} title={m.title}>
+                {m.desc}
+              </InfoTile>
+            ))}
+          </div>
+          <ul
+            style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "var(--space-2) var(--space-5)",
+            }}
+          >
+            {fibroscan.rapidos.map((r) => (
+              <li
+                key={r}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  fontSize: "var(--fs-body-sm)",
+                  color: "var(--text-strong)",
+                }}
+              >
+                <Icon name="check" size={16} color="var(--icon-accent)" />
+                {r}
+              </li>
+            ))}
+          </ul>
+          <div style={{ display: "flex", gap: "var(--space-4)", flexWrap: "wrap", marginTop: "var(--space-2)" }}>
+            <Button variant="accent" href={fibroscan.waHref} iconLeft={<Icon name="message-circle" size={16} />}>
+              WhatsApp {fibroscan.whatsapp}
+            </Button>
+            <Button variant="outline" href={fibroscan.facebook} iconLeft={<Icon name="facebook" size={16} />}>
+              Síguenos en Facebook
+            </Button>
+          </div>
+          <p style={{ fontSize: "var(--fs-caption)", color: "var(--text-muted)" }}>
+            Estudio realizado bajo indicación y valoración médica.
+          </p>
+        </div>
+        <div
+          style={{
+            borderRadius: "var(--radius-lg)",
+            overflow: "hidden",
+            boxShadow: "var(--shadow-card)",
+            border: "var(--border-hairline) solid var(--border-subtle)",
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/fibroscan-mascota.webp"
+            alt="Mascota del equipo FibroScan en un consultorio"
+            style={{ display: "block", width: "100%", height: "auto" }}
+          />
+        </div>
+      </div>
     </section>
   );
 }
@@ -475,6 +562,7 @@ export default function Home() {
         <Beneficios />
         <Servicios />
         <UnidadEstetica />
+        <FibroScan />
         <Especialistas />
         <Filosofia />
         <Preguntas />
